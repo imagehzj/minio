@@ -4,8 +4,10 @@ LABEL maintainer="shoothzj@gmail.com"
 
 WORKDIR /opt/sh/minio
 
-RUN wget https://dl.min.io/server/minio/release/linux-amd64/minio && \
-wget https://dl.min.io/client/mc/release/linux-amd64/mc && \
+ARG TARGETARCH
+
+RUN wget https://dl.min.io/server/minio/release/linux-$TARGETARCH/minio && \
+wget https://dl.min.io/client/mc/release/linux-$TARGETARCH/mc && \
 chmod +x /opt/sh/minio/minio && \
 chmod +x /opt/sh/minio/mc && \
 ln -s /opt/sh/minio/minio /usr/bin/minio && \
